@@ -228,3 +228,21 @@ footer {
     padding: 1px;
     margin: 0px -12px;
 }
+
+/* SINGLE TASK */
+
+
+.single-task {
+    display: flex;    
+    justify-content: space-evenly;
+    margin: 20px 0px;
+}
+
+.single-task > div:nth-child(odd) {
+    background-color: grey;
+    
+}
+
+.single-task div {
+    text-align: center;
+}

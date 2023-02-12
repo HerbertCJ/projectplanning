@@ -1,28 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { useEffect } from "react"
-
 
 const data = [
     {
         id: '1',
         title: 'Reform Apartment',
-        budget: 0,
+        budget: 50,
         description: 'Reform my apartment in August 29, lets start deciding what to buy.',
         tasks: [],
+        total: 50,
     },
     {
         id: '2',
         title: 'Reform Deck',
-        budget: 0,
+        budget: 50,
         description: 'Reform my Deck in September 02, lets start deciding what to buy.',
         tasks: [],
+        total: 50,
     },
     {
         id: '3',
         title: 'Buy Material',
-        budget: 0,
+        budget: 50,
         description: 'Buy materials for school.',
         tasks: [],
+        total: 50,
     },
 ]
 
@@ -40,27 +41,41 @@ export const projectSlice = createSlice({
             const newData = [...state.projectsData].filter((project) => project.id !== id)            
             state.projectsData = newData
         },
-        addProject: (state, {payload}) => { 
-            const newData = [...state.projectsData, payload]
+        addProject: (state, {payload}) => {
+            let {total, budget} = payload
+            total = budget
+            const newData = [...state.projectsData, {...payload, total}]
             state.projectsData = newData            
         },
         addTask: (state, {payload}) => { 
-            const {id, taskTitle, taskPrice} = payload
-            let newTask = {
+            const {id, taskTitle, taskPrice} = payload            
+            let newTask = {                
                 taskTitle,
                 taskPrice,
-            }
+            }           
             const newData = state.projectsData.map((project) => {
                 if(project.id === id) {
                     project.tasks = [...project.tasks, newTask ]
+                    project.total -= taskPrice
                 }
                 return project
             })
             state.projectsData = newData            
         },
+        deleteTask: (state, {payload}) => {            
+            const {projectId, index, taskPrice} = payload
+            const newData = state.projectsData.map((project) => {
+                if(project.id === projectId) {                                        
+                    project.tasks.splice(index, 1)
+                    project.total += Number(taskPrice)
+                }
+                return project
+            })
+            state.projectsData = newData
+        },        
     },
 })
 
-export const {deleteProject, addProject, addTask} = projectSlice.actions
+export const {deleteProject, addProject, addTask, deleteTask} = projectSlice.actions
 
 export default projectSlice.reducer

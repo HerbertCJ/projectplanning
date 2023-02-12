@@ -12,6 +12,7 @@ function NewProject() {
     title: '', 
     budget: 0,
     description: '',
+    total: 0,
     tasks: [],
   }
  
@@ -22,11 +23,10 @@ function NewProject() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(!data.title || !data.description || !data.budget) {
-      toast.error('Missing Title or Description.')
+    if(!data.title || !data.description || !data.budget < 0) {
+      toast.error('Missing information or Bugdet is low then 0.')
       return;
-    }
-    
+    }    
     dispatch(addProject(data))
     toast.success('Project Created.')
     navigate('/projects')
