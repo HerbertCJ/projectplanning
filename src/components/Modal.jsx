@@ -1,23 +1,31 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {addTask} from '../features/projectsSlice/projectSlice'
+import {toast} from 'react-toastify'
 
 function Modal({data, setShowModal}) {
-
-  const initialTaskData = {
+   const initialTaskData = {
     taskTitle: '',
-    taskPrice: '',
+    taskPrice: '',    
+    id: data.id,
   }
 
   const dispatch = useDispatch()
   const [taskData, setTaskData] = useState(initialTaskData)
   
   const handleSubmit = (e) => {
-    e.preventDefault()    
+    e.preventDefault()
     if(!taskData.taskTitle || !taskData.taskPrice) {
       return;
-    }    
-    dispatch(addTask(taskData))
+    }
+    if(taskData.taskPrice <= data.budget) {      
+      dispatch(addTask(taskData))
+      setShowModal(false)      
+    }
+    else {
+      toast.error('Task price is over budget')
+    }
+    
   }
 
   const handleChange = (e) => {

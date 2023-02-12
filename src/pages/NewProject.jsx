@@ -8,8 +8,11 @@ import { useNavigate } from "react-router-dom"
 function NewProject() {
   const navigate = useNavigate()
   const initialData = {
+    id: new Date().getMilliseconds().toString(),
     title: '', 
+    budget: 0,
     description: '',
+    tasks: [],
   }
  
   const dispatch = useDispatch()
@@ -19,10 +22,11 @@ function NewProject() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(!data.title || !data.description) {
+    if(!data.title || !data.description || !data.budget) {
       toast.error('Missing Title or Description.')
       return;
     }
+    
     dispatch(addProject(data))
     toast.success('Project Created.')
     navigate('/projects')
@@ -32,7 +36,7 @@ function NewProject() {
     const name = e.target.name
     const value = e.target.value
     setData({...data, [name]: value})
-   
+       
   }
 
   const clearData = () => {

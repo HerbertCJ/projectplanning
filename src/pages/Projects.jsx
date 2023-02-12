@@ -28,10 +28,11 @@ function Projects() {
         <Link to='/newproject' className='btn btn-dark'>New Project</Link>        
       </div>
       <div className='display-projects'>
-        {projectsData.map((project) => {
+        {projectsData.map((project) => {  
+              
           const { id } = project
           return (
-            <SingleProject key={id} {...project}/>
+            <SingleProject key={id} {...project} />
           )
         })}
       </div>

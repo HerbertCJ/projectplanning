@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { deleteProject } from "../features/projectsSlice/projectSlice"
 
-function SingleProject({id, title, description, budget}) {
+function SingleProject({id, title, description, budget}) {  
   const dispatch = useDispatch()
   return (
     <section className="single-project">
