@@ -6,16 +6,19 @@ const data = [
         id: '1',
         title: 'Reform Apartment',
         description: 'Reform my apartment in August 29, lets start deciding what to buy.',
+        budget: 0,
     },
     {
         id: '2',
         title: 'Reform Deck',
         description: 'Reform my Deck in September 02, lets start deciding what to buy.',
+        budget: 0,
     },
     {
         id: '3',
         title: 'Buy Material',
-        description: 'Buy materials for school.'
+        description: 'Buy materials for school.',
+        budget: 0,
     },
 ]
 
@@ -43,10 +46,13 @@ export const projectSlice = createSlice({
             const newData = [...state.projectsData, newProject]
             state.projectsData = newData
         },
+        addTask: (state, {payload}) => {
+            console.log(payload)
+        }
 
     },
 })
 
-export const {deleteProject, addProject} = projectSlice.actions
+export const {deleteProject, addProject, addTask} = projectSlice.actions
 
 export default projectSlice.reducer

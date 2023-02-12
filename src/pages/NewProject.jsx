@@ -46,6 +46,8 @@ function NewProject() {
            <h2>Create new project</h2>      
             <label htmlFor="title">Title</label>
             <input type="text" name="title" id="title" onChange={handleChange} value={data.title} required />
+            <label htmlFor="budget">Budget</label>
+            <input type="number" name="budget" id="budget" onChange={handleChange} value={data.budget} step='0.5' required />
             <label htmlFor="description">Description</label>
             <textarea name="description" id="description" onChange={handleChange} value={data.description} required maxLength='300'/>
             <div className="btns-form">
