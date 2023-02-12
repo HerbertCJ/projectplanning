@@ -42,21 +42,25 @@ export const projectSlice = createSlice({
             state.projectsData = newData
         },
         addProject: (state, {payload}) => {
-            let {total, budget} = payload
-            total = budget
-            const newData = [...state.projectsData, {...payload, total}]
+            let {budget} = payload
+            const newbudget = Number(parseFloat(budget).toFixed(2))
+            const newtotal = Number(newbudget)
+            const newData = [...state.projectsData, {...payload, total: newtotal, budget: newbudget}]
             state.projectsData = newData            
         },
         addTask: (state, {payload}) => { 
-            const {id, taskTitle, taskPrice} = payload            
+            const {id, taskTitle, taskPrice} = payload  
+            const newPrice = Number(parseFloat(taskPrice).toFixed(2))             
             let newTask = {                
                 taskTitle,
-                taskPrice,
-            }           
+                taskPrice: newPrice,
+            }
             const newData = state.projectsData.map((project) => {
                 if(project.id === id) {
-                    project.tasks = [...project.tasks, newTask ]
+                    project.tasks = [...project.tasks, newTask ]                  
                     project.total -= taskPrice
+                    let total = Number(parseFloat(project.total).toFixed(2))
+                    project.total = total
                 }
                 return project
             })
@@ -64,10 +68,13 @@ export const projectSlice = createSlice({
         },
         deleteTask: (state, {payload}) => {            
             const {projectId, index, taskPrice} = payload
+            const newPrice = Number(parseFloat(taskPrice).toFixed(2))
             const newData = state.projectsData.map((project) => {
                 if(project.id === projectId) {                                        
-                    project.tasks.splice(index, 1)
-                    project.total += Number(taskPrice)
+                    project.tasks.splice(index, 1)                                  
+                    project.total += taskPrice
+                    let total = Number(parseFloat(project.total).toFixed(2))
+                    project.total = total               
                 }
                 return project
             })

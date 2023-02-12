@@ -49,8 +49,15 @@ function SingleProjectPage() {
         <button type="button" className="btn btn-dark" onClick={() => {setShowModal(!showModal)}}>
           Configure
         </button>
-      </div>
-      <div>        
+      </div>      
+      <div className="tasks-div"> 
+        {tasks.length > 0 && 
+        (<header>
+          <p>Title</p>
+          <p>Price</p>
+          <p className="task-div-spacing"></p>
+        </header> )
+        }                
         {tasks.map((task, index) => { 
           return <SingleTask key={index} {...task} projectId={loadProject.id} index={index} />
         })}

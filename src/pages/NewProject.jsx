@@ -24,7 +24,7 @@ function NewProject() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if(!data.title || !data.description || !data.budget < 0) {
-      toast.error('Missing information or Bugdet is low then 0.')
+      toast.error('Enter Title and Description.')
       return;
     }    
     dispatch(addProject(data))
@@ -51,9 +51,9 @@ function NewProject() {
             <label htmlFor="title">Title</label>
             <input type="text" name="title" id="title" onChange={handleChange} value={data.title} required />
             <label htmlFor="budget">Budget</label>
-            <input type="number" name="budget" id="budget" onChange={handleChange} value={data.budget} step='0.5' required />
+            <input type="number" name="budget" id="budget" onChange={handleChange} value={data.budget} required />
             <label htmlFor="description">Description</label>
-            <textarea name="description" id="description" onChange={handleChange} value={data.description} required maxLength='300'/>
+            <textarea name="description" id="description" onChange={handleChange} value={data.description} required maxLength='180'/>
             <div className="btns-form">
               <button type="submit" className="btn btn-dark" onClick={handleSubmit}>Create</button>
               <button type="button" className="btn btn-warning" onClick={clearData}>Clear</button>

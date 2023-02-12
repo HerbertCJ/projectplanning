@@ -87,42 +87,53 @@ footer {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: center;    
 }
 
 .single-project {
+    position: relative;
     border: 1px solid black;
     width: 300px;
-    height: 300px;
+    height: 350px;    
+    margin: 10px;    
+}
+
+.single-project p {
+   word-wrap: break-word;   
+}
+
+.single-project p {
+    padding: 0px 10px;
+}
+
+.single-project h4 {
     padding: 10px;
-    margin: 10px;
 }
 
 .btn-config {
     display: flex;
-    justify-content: flex-end;
-
-
+    position: absolute;
+    bottom: 0;   
+    width: 100%;
+    margin: 0 auto;
 }
 
 .btn-config button,
-.btn-config a {
-    margin: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn-config a {    
+    width: 40%;
+    margin: 0px auto 20px auto;
 }
 
 /* New Project */
 
-.form-div {    
+.form-div { 
     width: 70vw;
     display: flex;
     justify-content: center;    
     margin: 50px auto;
     padding: 20px;
     border: 1px solid black;
+    border-radius: 10px;
 }
 
 .form {
@@ -177,8 +188,22 @@ footer {
 
 .project-configure {
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: space-between;    
+}
+
+.tasks-div {
+    margin-top: 30px;
+}
+
+.tasks-div header{
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+    font-size: 18px;    
+}
+
+.task-div-spacing {
+    margin-left: 20px;
 }
 
 /* MODAL ADD TASK */
@@ -235,14 +260,16 @@ footer {
 .single-task {
     display: flex;    
     justify-content: space-evenly;
-    margin: 20px 0px;
+    margin: 20px 0px;    
+    position: relative;
 }
 
-.single-task > div:nth-child(odd) {
-    background-color: grey;
-    
+.single-task:nth-child(odd) {
+    background-color: rgba(128, 128, 128, 0.356);    
 }
 
-.single-task div {
-    text-align: center;
+.single-task button {
+    position: absolute;
+    width: 100px;
+    right: 0;
 }
