@@ -16,8 +16,7 @@ function NewTask({data, setShowModal}) {
 
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(data.total)  
+    e.preventDefault()    
     if(!taskData.taskTitle || taskData.taskPrice < 0) {
       toast.error('Price must be positive.')
       return;

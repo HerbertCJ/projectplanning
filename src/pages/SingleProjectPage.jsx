@@ -13,6 +13,10 @@ function SingleProjectPage() {
   const [loadProject, setLoadProject] = useState([])
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    localStorage.setItem('projectsData', JSON.stringify(projectsData))        
+  }, [projectsData])
   
   useEffect(() => {
     setLoading(true)

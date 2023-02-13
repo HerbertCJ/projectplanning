@@ -8,8 +8,11 @@ const data = [
         title: 'Reform Apartment',
         budget: 50,
         description: 'Reform my apartment in August 29, lets start deciding what to buy.',
-        tasks: [],
-        total: 50,
+        tasks: [
+            {taskTitle: "Buy Wood", taskPrice: 25},
+            {taskTitle: "Buy Rocks", taskPrice: 10},
+            ],
+        total: 15,
     },
     {
         id: '2',
@@ -24,8 +27,11 @@ const data = [
         title: 'Buy Material',
         budget: 50,
         description: 'Buy materials for school.',
-        tasks: [],
-        total: 50,
+        tasks:  [
+            {taskTitle: "Buy Books", taskPrice: 30},
+            {taskTitle: "Buy Pen", taskPrice: 5},
+            ],            
+        total: 15,
     },
 ]
 
@@ -35,7 +41,7 @@ const getLocalStorage = () => {
       return JSON.parse(localStorage.getItem('projectsData'))
     }
     else {
-      return []
+      return data
     }
   }
 
