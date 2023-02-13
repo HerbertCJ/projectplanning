@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import SingleProject from '../components/SingleProject'
@@ -5,7 +6,10 @@ import SingleProject from '../components/SingleProject'
 
 function Projects() {
   const {projectsData, isLoading} = useSelector((store) => store.project)
-  
+
+  useEffect(() => {
+    localStorage.setItem('projectsData', JSON.stringify(projectsData))        
+  }, [projectsData])
 
   if(isLoading) {
     return <section className="section-center middle">

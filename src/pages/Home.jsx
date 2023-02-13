@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import homeImg from '../imgs/home-project.svg'
 
 function Home() {
   return (

@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { useEffect } from "react"
+
 
 const data = [
     {
@@ -27,11 +29,22 @@ const data = [
     },
 ]
 
+const getLocalStorage = () => {
+    let projectsData = localStorage.getItem('projectsData')
+    if (projectsData) {
+      return JSON.parse(localStorage.getItem('projectsData'))
+    }
+    else {
+      return []
+    }
+  }
+
 
 const initialState = {
-    projectsData: data,
+    projectsData: getLocalStorage(),
     isLoading: false,
 }
+
 
 export const projectSlice = createSlice({
     name:'project',
